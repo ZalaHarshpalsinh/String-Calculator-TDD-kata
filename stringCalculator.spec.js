@@ -35,4 +35,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '1\n2,3\n4,5' ) ).toBe( 15 )
         } )
+
+        test( 'Handles the use of custom delimiter specified at the start of string', () =>
+        {
+                expect( add( '//;\n1;2;3;4;5' ) ).toBe( 15 );
+        } )
 } )
