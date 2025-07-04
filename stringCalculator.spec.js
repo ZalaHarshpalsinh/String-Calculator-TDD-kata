@@ -15,4 +15,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '' ) ).toBe( 0 )
         } )
+
+        test( 'Returns the number itself if input string contains only one number', () =>
+        {
+                expect( add( '100' ) ).toBe( 100 )
+        } )
 } )
