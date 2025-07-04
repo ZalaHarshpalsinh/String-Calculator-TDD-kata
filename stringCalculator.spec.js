@@ -1,5 +1,5 @@
 import add from "./stringCalculator.js"
-import { NegativeNumberError } from "./errors.js";
+import { NegativeNumberError, InvalidInputStringError } from "./errors.js";
 
 
 describe( 'Sanity checks', () =>
@@ -42,8 +42,15 @@ describe( 'add method tests', () =>
                 expect( add( '//;\n1;2;3;4;5' ) ).toBe( 15 );
         } )
 
-        test( 'Throws a correct error if input string contains negative numbers', () =>
+        test( 'Throws a correct corresponding error if input string contains negative numbers', () =>
         {
                 expect( () => add( '//$\n1$-2$3$-4$5' ) ).toThrow( new NegativeNumberError( [ -2, -4 ] ) )
+        } )
+
+        test( 'Throws a correct corresponding error if input string is not in valid format', () =>
+        {
+                expect( () => add( 'abcd' ) ).toThrow( new InvalidInputStringError( [ 'abcd' ] ) )
+                expect( () => add( '10,a,' ) ).toThrow( new InvalidInputStringError( [ 'a', '' ] ) )
+                expect( () => add( '///;\n\n1;2;3' ) ).toThrow( new InvalidInputStringError( [ '///;', '', '1;2;3' ] ) )
         } )
 } )
