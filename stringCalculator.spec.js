@@ -1,4 +1,5 @@
 import add from "./stringCalculator.js"
+import { NegativeNumberError } from "./errors.js";
 
 
 describe( 'Sanity checks', () =>
@@ -43,6 +44,6 @@ describe( 'add method tests', () =>
 
         test( 'Throws a correct error if input string contains negative numbers', () =>
         {
-                expect( () => add( '//$\n1$-2$3$-4$5' ) ).toThrow( 'negative numbers not allowed -2,-4' )
+                expect( () => add( '//$\n1$-2$3$-4$5' ) ).toThrow( new NegativeNumberError( [ -2, -4 ] ) )
         } )
 } )

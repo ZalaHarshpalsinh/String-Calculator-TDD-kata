@@ -1,3 +1,4 @@
+import { NegativeNumberError } from "./errors.js";
 
 function add( numbers )
 {
@@ -28,6 +29,21 @@ function add( numbers )
 
         // split all the numbers in the string using delimiter and parse each of them to convert to a number
         const parsedNumbers = numbers.split( delimiterTobeUsed ).map( ( num ) => parseInt( num ) )
+
+        //array to store all the negative numbers
+        const negativeNumbers = []
+
+        //variable to store the answer sum
+        let sum = 0;
+
+        //for each number: if non-negative, add to the sum else push to the negative number array
+        parsedNumbers.forEach( number =>
+        {
+                number >= 0 ? sum += number : negativeNumbers.push( number )
+        } );
+
+        //if input string has any negative numbers throw an exception
+        if ( negativeNumbers.length > 0 ) throw new NegativeNumberError( negativeNumbers )
 
         // sum all the parsed numbers
         return parsedNumbers.reduce( ( sum, number ) => sum += number, 0 )
