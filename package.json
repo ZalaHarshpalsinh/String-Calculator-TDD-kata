@@ -1,0 +1,20 @@
+{
+  "name": "string-calculator-tdd-kata",
+  "version": "1.0.0",
+  "description": "A practice exercise to get started with TDD and also the first test round of the Incubyte placement tests.",
+  "main": "stringCalculatorConsoleApp.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "TDD",
+    "Incubyte",
+    "red-green-refactor",
+    "string-calculator"
+  ],
+  "author": "Harshpalsinh Zala",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.0.4"
+  }
+}
