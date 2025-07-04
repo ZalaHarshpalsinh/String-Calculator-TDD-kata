@@ -40,4 +40,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '//;\n1;2;3;4;5' ) ).toBe( 15 );
         } )
+
+        test( 'Throws a correct error if input string contains negative numbers', () =>
+        {
+                expect( () => add( '//$\n1$-2$3$-4$5' ) ).toThrow( 'negative numbers not allowed -2,-4' )
+        } )
 } )
