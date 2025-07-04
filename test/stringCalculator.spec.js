@@ -1,5 +1,5 @@
-import add from "./stringCalculator.js"
-import { NegativeNumberError, InvalidInputStringError } from "./errors.js";
+import add from "../src/stringCalculator.js"
+import { NegativeNumberError, InvalidInputStringError } from "../src/errors.js";
 
 
 describe( 'Sanity checks', () =>
