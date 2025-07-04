@@ -4,7 +4,7 @@
   "description": "A practice exercise to get started with TDD and also the first test round of the Incubyte placement tests.",
   "main": "stringCalculatorConsoleApp.js",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
     "TDD",
@@ -16,5 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^30.0.4"
+  },
+  "type": "module",
+  "jest":{
+    "transform":{}
   }
 }
