@@ -20,4 +20,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '100' ) ).toBe( 100 )
         } )
+
+        test( 'Returns the correct sum if input string contains two comma-separated numbers', () =>
+        {
+                expect( add( '10,20' ) ).toBe( 30 )
+        } )
 } )
