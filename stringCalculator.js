@@ -1,4 +1,4 @@
-import { NegativeNumberError } from "./errors.js";
+import { NegativeNumberError, InvalidInputStringError } from "./errors.js";
 
 function add( numbers )
 {
@@ -27,8 +27,26 @@ function add( numbers )
                 numbers = customDelimiterSyntaxMatch[ 2 ]
         }
 
-        // split all the numbers in the string using delimiter and parse each of them to convert to a number
-        const parsedNumbers = numbers.split( delimiterTobeUsed ).map( ( num ) => parseInt( num ) )
+        // split all the numbers in the string using delimiter
+        const inputStringParts = numbers.split( delimiterTobeUsed )
+
+        //parse each number string to convert it to a number
+        const parsedNumbers = []
+
+        // array to store the invalid parts of input string which can not be parsed as numbers
+        const invalidParts = []
+
+        // for each part in input string: if it is a valid number parse it and store it in parsed numbers else store that part as invalid part
+        inputStringParts.forEach( ( part ) =>
+        {
+                if ( !part.match( /^[+-]?\d+$/ ) )
+                        invalidParts.push( part )
+                else
+                        parsedNumbers.push( parseInt( part ) )
+        } )
+
+        //if there is any invalid part in the input string throw an error
+        if ( invalidParts.length > 0 ) throw new InvalidInputStringError( invalidParts )
 
         //array to store all the negative numbers
         const negativeNumbers = []
