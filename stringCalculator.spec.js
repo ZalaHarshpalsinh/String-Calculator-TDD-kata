@@ -25,4 +25,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '10,20' ) ).toBe( 30 )
         } )
+
+        test( 'Returns the correct sum if input string contains multiple comma-separated numbers', () =>
+        {
+                expect( add( '1,2,3,4,5' ) ).toBe( 15 )
+        } )
 } )
