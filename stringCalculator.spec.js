@@ -30,4 +30,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '1,2,3,4,5' ) ).toBe( 15 )
         } )
+
+        test( 'Handles the newline between numbers as a delimiter', () =>
+        {
+                expect( add( '1\n2,3\n4,5' ) ).toBe( 15 )
+        } )
 } )
