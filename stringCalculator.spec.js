@@ -8,3 +8,11 @@ describe( 'Sanity checks', () =>
                 expect( 1 ).toBe( 1 );
         } );
 } );
+
+describe( 'add method tests', () =>
+{
+        test( 'Returns 0 as sum for an empty string ', () =>
+        {
+                expect( add( '' ) ).toBe( 0 )
+        } )
+} )
