@@ -73,4 +73,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '1,1001,2' ) ).toBe( 3 )
         } )
+
+        test( 'Handles custom delimiters of length more than 1', () =>
+        {
+                expect( add( '//***\n1***2***3' ) ).toBe( 6 )
+        } )
 } )
