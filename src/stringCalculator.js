@@ -14,7 +14,7 @@ function add( numbers )
         const defaultDelimiter = /,|\n/g
 
         //define regex for the syntax of the custom delimiter declaration
-        const customDelimiterSyntax = /\/\/(.)\n(.+)/
+        const customDelimiterSyntax = /\/\/(.+)\n(.+)/
 
         // set the delimiter to be used for splitting to default delimiter initially
         let delimiterTobeUsed = defaultDelimiter
