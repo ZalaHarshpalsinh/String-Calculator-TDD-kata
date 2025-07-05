@@ -44,10 +44,21 @@ function add( numbers )
         // for each part in input string: if it is a valid number parse it and store it in parsed numbers else store that part as invalid part
         inputStringParts.forEach( ( part ) =>
         {
-                if ( !part.match( /^[+-]?\d+$/ ) )
+                // regex for a number
+                const numberRegex = /^[+-]?\d+$/
+
+                //if current part is not a number store it in invalid parts array otherwise parse it
+                if ( !part.match( numberRegex ) )
                         invalidParts.push( part )
                 else
-                        parsedNumbers.push( parseInt( part ) )
+                {
+                        //parse the number
+                        const parsedNumber = parseInt( part )
+
+                        //if it is <= 1000 then store it in the array otherwise ignore it
+                        if ( parsedNumber <= 1000 )
+                                parsedNumbers.push( parsedNumber )
+                }
         } )
 
         //if there is any invalid part in the input string throw an error
