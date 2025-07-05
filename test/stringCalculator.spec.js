@@ -68,4 +68,9 @@ describe( 'add method tests', () =>
                 expect( () => add( '10,a,' ) ).toThrow( new InvalidInputStringError( [ 'a', '' ] ) )
                 expect( () => add( '///;\n\n1;2;3' ) ).toThrow( new InvalidInputStringError( [ '///;', '', '1;2;3' ] ) )
         } )
+
+        test( 'Numbers bigger than 1000 are ignored', () =>
+        {
+                expect( add( '1,1001,2' ) ).toBe( 3 )
+        } )
 } )
