@@ -67,4 +67,9 @@ function add( numbers )
         return parsedNumbers.reduce( ( sum, number ) => sum += number, 0 )
 }
 
-export default add
+function getCalledCount()
+{
+
+}
+
+export { add, getCalledCount }

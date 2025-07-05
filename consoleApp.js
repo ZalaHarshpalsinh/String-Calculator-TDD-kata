@@ -1,5 +1,5 @@
 import readline from 'readline';
-import add from "./src/stringCalculator.js"
+import { add } from "./src/stringCalculator.js"
 
 // create the readline interface
 const rl = readline.createInterface( {
