@@ -1,7 +1,12 @@
 import { NegativeNumberError, InvalidInputStringError } from "./errors.js";
 
+let addCalledCount = 0
+
 function add( numbers )
 {
+        //increment the called count
+        addCalledCount++;
+
         // sum for empty string is 0
         if ( numbers === '' ) return 0;
 
@@ -69,7 +74,7 @@ function add( numbers )
 
 function getCalledCount()
 {
-
+        return addCalledCount
 }
 
 export { add, getCalledCount }

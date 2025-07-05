@@ -10,6 +10,21 @@ describe( 'Sanity checks', () =>
         } );
 } );
 
+describe( 'getCalledCount method tests', () =>
+{
+        test( 'Returns the correct count of add() method being called', () =>
+        {
+                expect( getCalledCount() ).toBe( 0 )
+                add( '' )
+                expect( getCalledCount() ).toBe( 1 )
+                add( '1,2' )
+                expect( getCalledCount() ).toBe( 2 )
+                add( '//&\n1&2&3' )
+                expect( getCalledCount() ).toBe( 3 )
+        } )
+} )
+
+
 describe( 'add method tests', () =>
 {
         test( 'Returns 0 as sum for an empty string ', () =>
@@ -52,19 +67,5 @@ describe( 'add method tests', () =>
                 expect( () => add( 'abcd' ) ).toThrow( new InvalidInputStringError( [ 'abcd' ] ) )
                 expect( () => add( '10,a,' ) ).toThrow( new InvalidInputStringError( [ 'a', '' ] ) )
                 expect( () => add( '///;\n\n1;2;3' ) ).toThrow( new InvalidInputStringError( [ '///;', '', '1;2;3' ] ) )
-        } )
-} )
-
-describe( 'getCalledCount method tests', () =>
-{
-        test( 'Returns the correct count of add() method being called', () =>
-        {
-                expect( getCalledCount() ).toBe( 0 )
-                add( '' )
-                expect( getCalledCount() ).toBe( 1 )
-                add( '1,2' )
-                expect( getCalledCount() ).toBe( 2 )
-                add( '//&\n1&2&3' )
-                expect( getCalledCount() ).toBe( 3 )
         } )
 } )
