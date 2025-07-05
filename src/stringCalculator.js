@@ -25,11 +25,31 @@ function add( numbers )
         // if it does match the custom delimiter syntax update the delimiter to be used and remove the delimiter declaration part from the numbers string
         if ( customDelimiterSyntaxMatch )
         {
-                //Set the delimiter to be used to the custom delimiter
-                delimiterTobeUsed = customDelimiterSyntaxMatch[ 1 ]
+                //get the custom delimiter declaration
+                let customDelimiterDeclaration = customDelimiterSyntaxMatch[ 1 ]
 
                 //Set the numbers string to its substring which has delimiter declaration part removed
                 numbers = customDelimiterSyntaxMatch[ 2 ]
+
+                //if delimiter declaration is a single char use it as the delimiter
+                if ( customDelimiterDeclaration.length == 1 )
+                {
+                        delimiterTobeUsed = customDelimiterDeclaration
+                }
+                // else collect all the delimiters from the declaration
+                else
+                {
+                        // extract all delimiters from the brackets []
+                        let customDelimiters = customDelimiterDeclaration.match( /\[(.+?)\]/g ).map( delimiter => delimiter.slice( 1, -1 ) )
+
+                        //escape the special regex characters which are part of the delimiters
+                        customDelimiters = customDelimiters.map( d =>
+                                d.replace( /[-[\]/{}()*+?.\\^$|]/g, '\\$&' )
+                        );
+
+                        //Set the delimiter to be used to the custom delimiter
+                        delimiterTobeUsed = new RegExp( customDelimiters.join( '|' ), 'g' );
+                }
         }
 
         // split all the numbers in the string using delimiter
