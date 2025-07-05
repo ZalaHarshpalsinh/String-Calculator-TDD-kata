@@ -78,4 +78,9 @@ describe( 'add method tests', () =>
         {
                 expect( add( '//[***]\n1***2***3' ) ).toBe( 6 )
         } )
+
+        test( 'Handles multiple custom delimiters', () =>
+        {
+                expect( add( '//[**][&]\n1**2&3' ) ).toBe( 6 )
+        } )
 } )
